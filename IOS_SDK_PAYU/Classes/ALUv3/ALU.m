@@ -7,7 +7,7 @@
 //
 
 #import "ALU.h"
-#import "XMLDictionary.h"
+#import "XMLDictionary/XMLDictionary.h"
 #include <CommonCrypto/CommonDigest.h>
 #include <CommonCrypto/CommonHMAC.h>
 

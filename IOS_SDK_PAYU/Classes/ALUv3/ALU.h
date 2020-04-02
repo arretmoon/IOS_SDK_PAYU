@@ -12,7 +12,7 @@
 #import "ALUBillClientInfo.h"
 #import "ALUDELIVERYData.h"
 #import "ALUCardInfo.h"
-#import "XMLDictionary.h"
+#import "XMLDictionary/XMLDictionary.h"
 
 
 

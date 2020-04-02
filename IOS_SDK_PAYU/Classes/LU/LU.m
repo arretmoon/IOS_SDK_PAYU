@@ -7,7 +7,7 @@
 //
 
 #import "LU.h"
-#import "XMLDictionary.h"
+#import "XMLDictionary/XMLDictionary.h"
 #import "NSData+Base64.h"
 #import "MCMutableArray.h"
 
