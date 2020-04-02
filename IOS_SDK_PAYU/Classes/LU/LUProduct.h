@@ -15,6 +15,7 @@
     NSNumber *price; // проверка на «.» и положительную часть ORDER_PRICE[]
     NSUInteger qty;
     NSUInteger vat;
+    NSString *merch;
     
     //необязательные поля
     NSString *pgGroup;// ORDER_PGROUP[] //Массив данных с идентификаторами групп продуктов (услуг). Необязательное поле.
@@ -23,7 +24,7 @@
     
     
 }
--(id)initLUProductWithName:(NSString*)Name code:(NSString*)Code price:(NSNumber*)Price qty:(NSUInteger)Qty vat:(NSUInteger)Vat;
+-(id)initLUProductWithName:(NSString*)Name code:(NSString*)Code price:(NSNumber*)Price qty:(NSUInteger)Qty vat:(NSUInteger)Vat merch:(NSString*)Merch;
 -(NSString*)qtyString;
 -(NSString*)vatString;
 @property (nonatomic,readonly) NSString *name;
@@ -31,6 +32,7 @@
 @property (nonatomic,readonly) NSNumber *price;
 @property (nonatomic,readonly) NSUInteger qty;
 @property (nonatomic,readonly) NSUInteger vat;
+@property (nonatomic,readonly) NSString *merch;
 @property (nonatomic,strong) NSString *pgGroup;
 @property (nonatomic,strong) NSString *pinfo;
 //@property (nonatomic,readwrite) PriceType priceType;

@@ -18,10 +18,11 @@
 @synthesize vat;
 @synthesize pgGroup;
 @synthesize pinfo;
+@synthesize merch;
 //@synthesize priceType;
 
 
--(id)initLUProductWithName:(NSString*)Name code:(NSString*)Code price:(NSNumber*)Price qty:(NSUInteger)Qty vat:(NSUInteger)Vat{
+-(id)initLUProductWithName:(NSString*)Name code:(NSString*)Code price:(NSNumber*)Price qty:(NSUInteger)Qty vat:(NSUInteger)Vat merch:(NSString*)Merch{
     self=[super init];
     if(self){
         name=Name;
@@ -29,6 +30,7 @@
         price=Price;
         qty=Qty;
         vat=Vat;
+        merch=Merch;
         //priceType=NET;
     }
     return self;

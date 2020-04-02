@@ -44,7 +44,9 @@ typedef enum{
     NSString *ORDER_DATE; //Дата начала обработки заказа в системе в формате ГГГГ-ММ-ДД ЧЧ:ММ:СС (например: «2012-05-01 21:15:45»)
     NSString *BACK_REF;
     NSString *ORDER_HASH; //Подпись HMAC_MD5 для отправленных данных. Значение формируется автоматически из данных других обязательных полей
+    NSString *ORDER_PRICE_TYPE;
     
+    NSString *ORDER_MPLACE_MERCHANT;
     
     
     
@@ -95,6 +97,9 @@ typedef enum{
 @property (nonatomic,readwrite) BOOL TESTORDER;
 @property (nonatomic,readwrite) BOOL  Debug;
 @property (nonatomic,readwrite) BOOL AUTOMODE;
+
+@property (nonatomic,strong) NSString *ORDER_PRICE_TYPE;
+@property (nonatomic,strong) NSString *ORDER_MPLACE_MERCHANT;
 
 @property (nonatomic,readwrite) LanguageType LANGUAGE;
 @property (nonatomic,readwrite) NSNumber *ORDER_TIMEOUT;

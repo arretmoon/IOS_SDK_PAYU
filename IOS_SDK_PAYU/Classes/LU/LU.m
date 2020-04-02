@@ -42,6 +42,8 @@
 @synthesize LANGUAGE;
 @synthesize ORDER_TIMEOUT;
 @synthesize TIMEOUT_URL;
+@synthesize ORDER_PRICE_TYPE;
+@synthesize ORDER_MPLACE_MERCHANT;
 
 @synthesize BILL_FNAME;
 @synthesize BILL_LNAME;
@@ -183,13 +185,22 @@
     
     [parts addObject:LUPAY_METHODTypeString(PAY_METHOD)  key:@"PAY_METHOD"];
     [hashs addHash:LUPAY_METHODTypeString(PAY_METHOD)];
-    
+
+    [parts addObject:ORDER_PRICE_TYPE key:@"ORDER_PRICE_TYPE[]"];
+    [hashs addHash:ORDER_PRICE_TYPE];
+
+    for (LUProduct *product in products) {
+        [parts addObject:product.merch key:@"ORDER_MPLACE_MERCHANT[]"];
+        [hashs addHash:product.merch];
+    }
+
     [parts addObject:[ORDER_TIMEOUT stringValue]  key:@"ORDER_TIMEOUT"];
     //[hashs addHash:[ORDER_TIMEOUT stringValue]];
     
     [parts addObject:TIMEOUT_URL  key:@"TIMEOUT_URL"];
    // [hashs addHash:TIMEOUT_URL];
-    
+    [parts addObject:BACK_REF  key:@"BACK_REF"];
+
     [parts addObject:BoolToSTR(Debug) key:@"DEBUG"];
     [parts addObject:BoolToSTR(TESTORDER) key:@"TESTORDER"];
     
@@ -197,14 +208,16 @@
     NSString *postString =[parts componentsJoinedByString:@"&"]; //[parts postString];
     NSString *hashString = [hashs componentsJoinedByString:@""];
     hashString =[NSString stringWithFormat:@"%@%@",hashString,(TESTORDER?@"4TRUE":@"")];
+    NSLog(@"%@", hashString);
     NSString *hmac = [self HMACWithSourceAndSecret:hashString secret:SECRET_KEY];
-    
+    NSLog(@"HMAC: %@", hmac);
+
     postString = [postString stringByAppendingString:[NSString stringWithFormat:@"&ORDER_HASH=%@", hmac]];
-    //NSLog(@"%@",postString);
+    NSLog(@"%@",postString);
     NSData *postData =  [postString dataUsingEncoding:NSUTF8StringEncoding];
     
     
-    NSURL* URL = [NSURL URLWithString:@"https://secure.payu.ru/order/lu.php"];
+    NSURL* URL = [NSURL URLWithString:@"https://sandbox.payu.ru/order/lu.php"];
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
     [request addValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPMethod:@"POST"];
