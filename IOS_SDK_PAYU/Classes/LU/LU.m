@@ -143,6 +143,11 @@
     }
     
     for (LUProduct *product in products) {
+        [parts addObject:product.pinfo key:@"ORDER_PINFO[]"];
+        [hashs addHash:product.pinfo];
+    }
+
+    for (LUProduct *product in products) {
         [parts addObject:[product.price stringValue] key:@"ORDER_PRICE[]"];
         [hashs addHash:[product.price stringValue]];
     }
@@ -164,11 +169,6 @@
         [parts addObject:product.pgGroup key:@"ORDER_PGROUP[]"];
         [hashs addHash:product.pgGroup];
         
-    }
-    
-    for (LUProduct *product in products) {
-        [parts addObject:product.pinfo key:@"ORDER_PINFO[]"];
-        [hashs addHash:product.pinfo];
     }
     
     
